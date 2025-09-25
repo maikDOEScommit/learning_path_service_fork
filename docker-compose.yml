@@ -24,6 +24,7 @@ services:
     build:
       context: ../resource_catalog_service_example_fork
       dockerfile: Dockerfile
+    image: resource-catalog
     container_name: resource-catalog
     environment:
       - PORT=5002
@@ -58,11 +59,12 @@ services:
     build:
       context: ../topic_skill_service_example_fork
       dockerfile: Dockerfile
+    image: topics-skills
     container_name: topics-skills
     environment:
       - DATABASE_URL=postgresql+psycopg2://app:app123@pg-topics:5432/topics_db
     ports:
-      - "5005:5000"
+      - "5050:5000"
     depends_on:
       - pg-topics
 
@@ -89,6 +91,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: learning-path
     container_name: learning-path
     environment:
       - PORT=8000
